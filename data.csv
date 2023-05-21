@@ -1,0 +1,2 @@
+time_series,model,train_window_size,predict_window_size,mae,mse,rmse,mae_1st,mse_1st,mae_2nd,mse_2nd,mae_3rd,mse_3rd,mape,mase,smape,mda,timestamp
+random_oil_prices,baseline,30,3,5.965,55.195,7.429,5.802,49.932,5.865,53.351,6.228,62.301,9.879,1.03,9.79,0.462,2023-05-21 18:26:22
