@@ -104,7 +104,7 @@ class TimeSeries:
     # Calculate the error, also called the residual
     def mean_absolute_error(self):
         """
-        Provides the mean absolute error for the model's predictions.'
+        MAE - Provides the mean absolute error for the model's predictions.
         """
 
         abs_residuals = np.abs(self.residuals)
@@ -114,7 +114,7 @@ class TimeSeries:
     
     def mean_squared_error(self):
         """
-        Provides the mean absolute error for the model's predictions.'
+        MSE - Provides the mean absolute error for the model's predictions.
         """
         squared_residuals = self.residuals**2
         mse = squared_residuals.mean()
@@ -123,14 +123,15 @@ class TimeSeries:
     
     def root_mean_squared_error(self):
         """
-        Provides the root mean squared error for the model's predictions.'
+        RMSE - Provides the root mean squared error for the model's predictions.
         """
         rmse = np.sqrt(self.mean_squared_error())
         return rmse
 
     def error_1st_prediction(self):
         """
-        Provides the mean squared error for the model's predictions.'
+        MAE_1st, MSE_1st - Provides the mean absolute error and mean squared error
+        for the model's 1st prediction.
         """
         residuals_1st = self.residuals[:, 0]
         abs_residuals_1st = np.abs(residuals_1st)
@@ -141,8 +142,8 @@ class TimeSeries:
 
     def error_2nd_prediction(self):
         """
-        Provides the mean absolute error and mean squared error
-        for the model's 1st prediction.'
+        MAE_2nd, MSE_2nd - Provides the mean absolute error and mean squared error
+        for the model's 2nd prediction.'
         """
         residuals_2nd = self.residuals[:, 1]
         abs_residuals_2nd = np.abs(residuals_2nd)
@@ -153,7 +154,8 @@ class TimeSeries:
     
     def error_3rd_prediction(self):
         """
-        Provides the mean absolute error for the model's predictions.'
+        MAE_3rd, MSE_3rd - Provides the mean absolute error and mean squared error
+        for the model's 3rd prediction.
         """
         residuals_3rd = self.residuals[:, 2]
         abs_residuals_3rd = np.abs(residuals_3rd)
@@ -164,7 +166,7 @@ class TimeSeries:
 
     def mean_absolute_percentage_error(self):
         """
-        Provides the mean absolute percentage error for the model's predictions.
+        MAPE - Provides the mean absolute percentage error for the model's predictions.
         Note: Be cautious of division by zero when using this metric.
         """
         mape = np.mean(np.abs((self.residuals / self.predict_windows)) * 100)
@@ -172,7 +174,7 @@ class TimeSeries:
 
     def mean_absolute_scaled_error(self):
         """
-        Provides the mean absolute scaled error for the model's predictions.
+        MASE - Provides the mean absolute scaled error for the model's predictions.
         Assumes the naive forecasting method of the previous observation.
         """
         naive_forecast_residuals = self.series[self.train_window_size:-1] - self.series[self.train_window_size-1:-2]
@@ -182,7 +184,7 @@ class TimeSeries:
 
     def symmetric_mean_absolute_percentage_error(self):
         """
-        Provides the symmetric mean absolute percentage error for the model's predictions.
+        sMAPE - Provides the symmetric mean absolute percentage error for the model's predictions.
         This version of MAPE handles zeros in the actual values better than MAPE.
         """
         numerator = np.abs(self.predict_windows - self.predictions)
@@ -192,7 +194,7 @@ class TimeSeries:
 
     def mean_directional_accuracy(self):
         """
-        Provides the mean directional accuracy for the model's predictions.
+        MDA - Provides the mean directional accuracy for the model's predictions.
         This measure shows the proportion of forecasts that correctly predict the direction of change.
         """
         actual_direction = np.sign(self.predict_windows[1:] - self.predict_windows[:-1])
@@ -317,8 +319,6 @@ def baseline(train_windows, predict_window_size):
 
 
 def create_dataset():
-    # Now, to use the Model and baseline_predict:
-    
     # Create date range from Jan 2007 to Dec 2022
     dates = pd.date_range(start='2007-01-01', end='2022-12-01', freq='M')
     
