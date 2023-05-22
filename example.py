@@ -10,7 +10,7 @@ oil_prices.plot()
 ts = ut.TimeSeries(name='random_oil_prices', series=oil_prices, train_window_size=30, predict_window_size=3)
 ts.create_windows()
 
-# Make predictions using the baseline_predict function
+# Make predictions using the baseline predict function
 ts.predict(lambda x: ut.baseline(x, ts.predict_window_size))
 
 # Evaluate the model
